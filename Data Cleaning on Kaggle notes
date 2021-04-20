@@ -1,0 +1,18 @@
+SCALING
+Scaling in Data analysis refers to changing numeric values to fit in a range of 0 - 1. Take for e.g. we're dealing with two currencies, ML models cannot necessarily
+adjust for equivalency. If we have a column for Naira and a column for USD, given 1USD = 480#, any +1 increase across the two values will be disproportionate.
+Hence, we scale them both to fit within a range of 0-1, such that the two columns will be equivalent as well as any increase or decrease made to them
+
+#CODE FOR SCALING
+from mlxtend.preprocessing import minmax_scaling
+
+original_data = x
+scaled_data = minmax_scaling(original_data, columns=[])
+
+NORMALIZATION
+Normalization on the other hand, another tool for organizing data, is the transformation of a data range into a normal distribution. ML models such as Linear Discriminant Analysis(LDA),
+Gaussian Naive Bayes, etc already assume your data is normally distributed.
+
+#CODE FOR NORMALIZATION using Box-Cox transformation
+from scipy import stats
+normalized_data = stats.boxcox(original_data)
